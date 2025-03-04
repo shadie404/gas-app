@@ -1,7 +1,11 @@
 import React from 'react';
 import { View, StyleSheet, Dimensions, Platform } from 'react-native';
-import MapView, { Marker, PROVIDER_GOOGLE } from 'react-native-maps';
 import { MapPin } from 'lucide-react-native';
+
+let MapView, Marker, PROVIDER_GOOGLE;
+if (Platform.OS !== 'web') {
+  ({ MapView, Marker, PROVIDER_GOOGLE } = require('react-native-maps'));
+}
 
 interface Location {
   latitude: number;
